@@ -5,10 +5,10 @@
 Django settings for softwarecollections project.
 
 For more information on this file, see
-https://docs.djangoproject.com/en/1.6/topics/settings/
+https://docs.djangoproject.com/en/1.7/topics/settings/
 
 For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.6/ref/settings/
+https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 # import ugettext_lazy to avoid circular module import
@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'm0zn_p7x*o(xvk^9p8_$6n7o)dn$bh-*_*xu*b!mg9$ihh0xu+'
@@ -32,9 +32,9 @@ DBDEBUG = os.environ.get('DEBUG', '') == 'DB'
 ALLOWED_HOSTS = []
 
 # Emails
-# https://docs.djangoproject.com/en/1.6/ref/settings/#std:setting-ADMINS
-# https://docs.djangoproject.com/en/1.6/ref/settings/#std:setting-MANAGERS
-# https://docs.djangoproject.com/en/1.6/ref/settings/#std:setting-SERVER_EMAIL
+# https://docs.djangoproject.com/en/1.7/ref/settings/#std:setting-ADMINS
+# https://docs.djangoproject.com/en/1.7/ref/settings/#std:setting-MANAGERS
+# https://docs.djangoproject.com/en/1.7/ref/settings/#std:setting-SERVER_EMAIL
 ADMINS = ()
 MANAGERS = ADMINS
 SERVER_EMAIL = 'root@localhost'
@@ -46,7 +46,7 @@ COPR_API_URL   = COPR_URL + '/api'
 COPR_COPRS_URL = COPR_URL + '/coprs'
 
 # Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -56,7 +56,7 @@ DATABASES = {
 }
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
+# https://docs.djangoproject.com/en/1.7/topics/i18n/
 
 LANGUAGE_CODE = 'en'
 
