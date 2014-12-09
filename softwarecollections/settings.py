@@ -41,7 +41,6 @@ INSTALLED_APPS = (
     'django_markdown2',
     'tagging',
     'sekizai',
-    'south',
     'captcha',
 )
 
