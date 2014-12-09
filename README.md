@@ -4,12 +4,39 @@ softwarecollections
 Software Collections Management Website
 
 
+Date migration from Django-1.6.x (Fedora-20) to Django-1.7.x (Fedora 21)
+-------------------------------------------------------------------
+
+1. With Django 1.6.x dump the data:
+
+    softwarecollections dumpdata scls tagging auth.user > data.json
+
+2. Remove the database and upgrade the system or move data.json to the new system.
+
+3. Check the new id of ContentType SoftwareCollection:
+
+    softwarecollections shell
+    >>> from django.contrib.contenttypes.models import ContentType
+    >>> ContentType.objects.get(app_label='scls', model='softwarecollection').id
+    2
+
+4. Fix the id in data.json:
+
+    sed -i -r 's/"content_type": [0-9]+,/"content_type": 2,/g' data.json
+
+5. Load updated data:
+
+    softwarecollections loaddata data.json
+
+Voilà!
+
+
 Installation
 ------------
 
 Enable yum repository from copr:
 
-    sudo wget -O /etc/yum.repos.d/SoftwareCollections.repo http://copr-fe.cloud.fedoraproject.org/coprs/mstuchli/SoftwareCollections/repo/fedora-20-x86_64/
+    sudo wget -O /etc/yum.repos.d/SoftwareCollections.repo http://copr-fe.cloud.fedoraproject.org/coprs/mstuchli/SoftwareCollections/repo/fedora-21-x86_64/
 
 Install package softwarecollections:
 
@@ -27,7 +54,7 @@ Check the configuration in config files:
 If you have changed the configuration of database connection
 (which is recommended for production), initialize the database with:
 
-    sudo softwarecollections syncdb --migrate --noinput
+    sudo softwarecollections syncdb --noinput
 
 
 Development instance
@@ -56,8 +83,7 @@ Create local configuration:
 
 Initialize development database:
 
-    ./manage.py syncdb --all
-    ./manage.py migrate --fake
+    ./manage.py syncdb
 
 Run development server:
 
@@ -77,7 +103,7 @@ first make Yourself a superuser:
 To update your code and database to the last available version run:
 
     git pull --rebase
-    ./manage.py syncdb --migrate --noinput
+    ./manage.py migrate
 
 You may also need to install some new requirements (see the spec file).
 
